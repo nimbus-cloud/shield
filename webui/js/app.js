@@ -1198,7 +1198,7 @@
                 var a = DB.archives[i];
                 var t = T[a.target_uuid];
                 var s = S[a.store_uuid];
-                tbl.Row(a, Icons("import"), t.name, t.agent, s.name, a.taken_at, a.expires_at, a.status, a.notes, Icons("trash"));
+                tbl.Row(a, '<button class="action restore">Restore</button>', t.name, t.agent, s.name, a.taken_at, a.expires_at, a.status, a.notes, Icons("trash"));
               }
               $('#archives-main').empty().append(tbl.Render({rowClass: 'status'}));
             });
@@ -1206,6 +1206,10 @@
         });
     });
     $('#main').on('submit', '#archive-search', searchArchives);
+    $('#main').on('click', 'button.restore', function(event){
+      uuid = $(event.target).closest('[data-uuid]').data('uuid');
+      console.log(uuid)
+    })
 
     var restoreArchive = lastly(function(event) {
       Loading($('#main'));
