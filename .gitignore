@@ -14,7 +14,9 @@
 /scality
 /consul
 /xtrabackup
+/mongo
 .DS_Store
+.idea
 
 # ignore release testing output
 /artifacts
